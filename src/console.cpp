@@ -62,10 +62,11 @@ json query_peer(unsigned id) {
 	result["name"] = std::string(udata.name);
 	result["friendid"] = udata.friendid;
 	result["connected"] = udata.connected;
-	result["heartbeat"] = udata.heartbeat;
+	result["heartbeat"] = sdata.heartbeat;
 	result["ts_injected"] = udata.ts_injected;
 	result["ts_connected"] = udata.ts_connected;
 	result["ts_disconnected"] = udata.ts_disconnected;
+	result["party_size"] = udata.party_size;
 
 	result["accumulated"] = json{};
 	result["accumulated"]["kills"] = udata.accumulated.kills;

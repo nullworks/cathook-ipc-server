@@ -21,8 +21,6 @@ struct user_data_s
 
     bool connected;
 
-    time_t heartbeat;
-
     time_t ts_injected;
     time_t ts_connected;
     time_t ts_disconnected;
@@ -66,6 +64,7 @@ struct user_data_s
         char server[24];
         char mapname[32];
 	} ingame;
+    int party_size;
 };
 
 namespace ipc_commands {
