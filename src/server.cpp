@@ -73,7 +73,7 @@ void print_status() {
 	*/
 	int ypos = 8;
 	ESC_CUP(2, ypos);
-	printf("%-2s %-5s %-9s %-21s %s\n", "ID", "PID", "SteamID", "Server IP", "Name");
+	printf("%-2s %-9s %-21s %s\n", "ID", "SteamID", "Server IP", "Name");
 	printf("    %-5s %-9s %-4s   %-5s   %-5s  %-9s %s", "State", "Class", "Team", "Score", "Total", "Health", "Heartbeat");
 	ypos += 3;
 	TEXT_NORMAL;
@@ -82,7 +82,7 @@ void print_status() {
 		if (!peer().memory->peer_data[i].free) {
 			ESC_CUP(2, ypos);
 			const auto& data = peer().memory->peer_user_data[i];
-			printf("%-2u %-5d %-9ld %-21s %s\n", i, peer().memory->peer_data[i].pid, data.friendid, data.ingame.server, data.name);
+			printf("%-2u %-9ld %-21s %s\n", i, data.friendid, data.ingame.server, data.name);
 			if (data.connected && data.ingame.good) {
 				printf("    %-5s %-9s %-4s   %-5d   %-5d   %-4d/%-4d %u\n",
 						data.ingame.life_state ? "Dead" : "Alive",
@@ -120,7 +120,7 @@ int main(int argc, char** argv) {
 		}
 		if (not silent)
 			print_status();
-		sleep(2);
+		sleep(1);
 	}
 	return 0;
 }

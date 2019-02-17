@@ -96,9 +96,6 @@ json query_peer(unsigned id) {
 	result["ingame"]["server"] = std::string(udata.ingame.server);
 	result["ingame"]["mapname"] = std::string(udata.ingame.mapname);
 
-	result["pid"] = sdata.pid;
-	result["starttime"] = sdata.starttime;
-
 	return result;
 }
 
@@ -187,6 +184,7 @@ json squery(const json& args) {
 	return result;
 }
 
+#if 0
 json kill(const json& args) {
 	if (getuid() != 0) {
 		throw std::runtime_error("kill can only be used as root");
@@ -207,6 +205,7 @@ json kill(const json& args) {
 	::kill(pid_t(peer->memory->peer_data[uid].pid), SIGKILL);
 	return json {};
 }
+#endif
 
 json echo(const json& args) {
 	json result {};
@@ -277,7 +276,7 @@ int main(int argc, const char** argv) {
 	commands["exec"] = &cmd::exec;
 	commands["exec_all"] = &cmd::exec_all;
 	commands["query"] = &cmd::query;
-	commands["kill"] = &cmd::kill;
+	//commands["kill"] = &cmd::kill;
 	commands["echo"] = &cmd::echo;
 	commands["connect"] = &cmd::connect;
 	commands["disconnect"] = &cmd::disconnect;
