@@ -42,7 +42,7 @@ int main(int argc, const char** argv) {
 		printf("Target id is NaN!\n");
 		return 1;
 	}
-	if (target_id == 0 || target_id > 31) {
+	if (target_id > 31) {
 		printf("Invalid target id: %u\n", target_id);
 		return 1;
 	}
